@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Product Inventory & Analytics Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <header class="app-header">
+      <div class="badge">JavaScript Internship Capstone Project</div>
+      <h1>Product Inventory & Analytics Dashboard</h1>
+      <p class="subtitle">Vanilla JavaScript Capstone Project implementing 15 Core JS Concepts</p>
+    </header>
+
+    <!-- Stat Summary Grid -->
+    <section class="stats-grid">
+      <div class="stat-card">
+        <span class="stat-label">Total Inventory Value</span>
+        <span class="stat-value" id="statTotalValue">$0</span>
+        <span class="stat-sub font-mono">Calculated dynamically</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Total Products</span>
+        <span class="stat-value" id="statTotalItems">0</span>
+        <span class="stat-sub font-mono">Items in array</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Affordable Items</span>
+        <span class="stat-value" id="statAffordableItems">0</span>
+        <span class="stat-sub font-mono">Under $200 price limit</span>
+      </div>
+    </section>
+
+    <!-- Action Toolbar -->
+    <section class="controls-card">
+      <h2>Interactive Actions</h2>
+      <p class="control-desc">Click below to trigger interactive <code>prompt()</code> inputs and recalculate financial metrics live.</p>
+      <div class="button-group">
+        <button class="btn btn-primary" onclick="handleUserPromptAdd()">
+          <span>➕ Add Product via prompt()</span>
+        </button>
+        <button class="btn btn-secondary" onclick="runDashboard(false)">
+          <span>🔄 Re-run Inventory Audit</span>
+        </button>
+        <button class="btn btn-outline" onclick="handleResetInventory()">
+          <span>🧹 Reset Roster</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Terminal Console Output Screen -->
+    <section class="terminal-card">
+      <div class="terminal-header">
+        <div class="terminal-dots">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+        </div>
+        <span class="terminal-title">Browser DevTools Console Output Log</span>
+      </div>
+      <pre id="terminalOutput" class="terminal-body"></pre>
+    </section>
+
+    <!-- Assignment Requirement Checklist UI View -->
+    <section class="checklist-card">
+      <h2>📋 Assignment Requirement Checklist</h2>
+      <div class="table-responsive">
+        <table class="checklist-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Requirement</th>
+              <th>Where Implemented</th>
+              <th>How It Works</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td><strong>Variables & Data Types</strong></td>
+              <td><code>app.js</code> (Lines 12-19)</td>
+              <td>Uses <code>const</code> for immutable array reference and <code>let</code> for mutable inventory state, numbers, strings, and objects.</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td><strong>Operators & Expressions</strong></td>
+              <td><code>app.js</code> (Lines 57, 106, 121, 319)</td>
+              <td>Uses arithmetic (<code>+</code>, <code>*</code>), comparison (<code>&lt;</code>, <code>&gt;=</code>, <code>===</code>), logical (<code>&amp;&amp;</code>, <code>||</code>), and template literal string expressions.</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td><strong>prompt() & Explicit Conversion</strong></td>
+              <td><code>app.js</code> (Lines 210, 212, 222, 229)</td>
+              <td>Prompts user for product name & price, explicitly converting string price input using <code>Number(rawPrice)</code>.</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td><strong>if...else Conditionals</strong></td>
+              <td><code>app.js</code> (Lines 57-63, 237-245)</td>
+              <td>Assigns categories ("Budget" &lt;$50, "Standard" $50-$299, "Premium" &gt;=$300) and validates inputs.</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td><strong>switch Statement</strong></td>
+              <td><code>app.js</code> (Lines 79-91)</td>
+              <td>Evaluates category in <code>getCategoryTaxRate()</code> to return specific tax rates (Budget 5%, Standard 10%, Premium 15%).</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td><strong>for, while, do...while Loops</strong></td>
+              <td><code>app.js</code> (Lines 119, 139, 205, 270)</td>
+              <td><code>do...while</code> validates prompt input; <code>while</code> loop calculates total category tax; <code>for</code> loop calculates value total & searches roster.</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td><strong>break & continue</strong></td>
+              <td><code>app.js</code> (Lines 275, 283)</td>
+              <td><code>continue</code> skips minor items &lt;$30 during audit; <code>break</code> terminates search loop early when item is found.</td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td><strong>Regular Functions</strong></td>
+              <td><code>app.js</code> (Lines 52, 75, 104, 116, 134)</td>
+              <td>Declares standard functions like <code>calculateTotalValue()</code> and <code>calculateTotalInventoryTax()</code> with return values.</td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td><strong>Arrow Functions</strong></td>
+              <td><code>app.js</code> (Lines 160, 173)</td>
+              <td>Uses arrow function <code>(product) =&gt; ...</code> for uppercase formatting string and array callbacks.</td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td><strong>Function & Default Parameters</strong></td>
+              <td><code>app.js</code> (Lines 104, 158)</td>
+              <td>Uses default parameters <code>rate = 0.08</code> and <code>maxPrice = 200</code>.</td>
+            </tr>
+            <tr>
+              <td>11</td>
+              <td><strong>Scope (Global, Function, Block)</strong></td>
+              <td><code>app.js</code> (Throughout)</td>
+              <td>Demonstrates global <code>inventory</code>, function scope variables inside <code>calculateTotalValue</code>, and block scope variables in <code>for</code>/<code>if</code>/<code>while</code>.</td>
+            </tr>
+            <tr>
+              <td>12</td>
+              <td><strong>Arrays & Objects</strong></td>
+              <td><code>app.js</code> (Lines 12-16)</td>
+              <td>Maintains an array of product objects with properties <code>name</code> and <code>price</code>.</td>
+            </tr>
+            <tr>
+              <td>13</td>
+              <td><strong>forEach() Array Method</strong></td>
+              <td><code>app.js</code> (Lines 311-321)</td>
+              <td>Iterates over product inventory to log each item alongside its assigned category.</td>
+            </tr>
+            <tr>
+              <td>14</td>
+              <td><strong>filter() Array Method</strong></td>
+              <td><code>app.js</code> (Lines 160-161)</td>
+              <td>Filters array for affordable products priced under limit dynamically.</td>
+            </tr>
+            <tr>
+              <td>15</td>
+              <td><strong>map() Array Method</strong></td>
+              <td><code>app.js</code> (Lines 163, 184)</td>
+              <td>Transforms product array into formatted uppercase strings `["LAPTOP: $800", ...]`.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
