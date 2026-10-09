@@ -243,7 +243,7 @@ function promptAddNewProduct(forcedName = null, forcedPrice = null) {
 
     // CONCEPT 4: Validation using if...else & CONCEPT 2: Logical OR (||) & isNaN()
     if (productName === "" || isNaN(productPrice) || productPrice <= 0) {
-      logOutput("⚠️ Invalid input! Product name cannot be empty and price must be a positive number.");
+      logOutput("Invalid input! Product name cannot be empty and price must be a positive number.");
       
       if (forcedName !== null) {
         // Break out of retry loop in non-interactive environment to avoid infinite loop
@@ -287,7 +287,7 @@ function auditAndSearchInventory(searchName = "Keyboard") {
 
     // CONCEPT 7: break statement (stops search loop early when target item is found)
     if (item.name.toLowerCase() === searchName.toLowerCase()) {
-      logOutput(`🎯 Target item "${item.name}" located! Terminating search loop (break triggered).`);
+      logOutput(`Target item "${item.name}" located! Terminating search loop (break triggered).`);
       break; // Exit the search loop immediately
     }
   }
