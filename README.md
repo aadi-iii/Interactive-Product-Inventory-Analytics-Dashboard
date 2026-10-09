@@ -16,7 +16,7 @@ The **Interactive Product Inventory & Analytics Dashboard** is a full-featured J
 ```text
 inventory-analytics-dashboard/
 ├── index.html      # Interactive UI runner & DevTools terminal emulator
-├── styles.css      # Modern dashboard stylesheet & typography
+├── styles.css      # Monochrome editorial stylesheet (grid background, typography)
 ├── app.js          # Core vanilla JS application logic (15 Concepts)
 └── README.md       # Project documentation & Assignment Requirement Checklist
 ```
@@ -28,7 +28,7 @@ inventory-analytics-dashboard/
 ### Option A: Open in Browser (Recommended for interactive `prompt()`)
 1. Open the project folder in File Explorer.
 2. Double-click `index.html` to open it in any browser (Chrome, Edge, Firefox, Safari).
-3. Click **"➕ Add Product via prompt()"** to trigger interactive browser `prompt()` dialogs.
+3. Click **"Add Product"** to trigger interactive browser `prompt()` dialogs.
 4. Open **Browser DevTools** (`F12` or `Ctrl + Shift + I` -> **Console tab**) to view live log outputs alongside the on-page terminal simulator.
 
 ### Option B: Run via Node.js
@@ -55,7 +55,7 @@ node -e "const app = require('./app.js'); app.runDashboard(true, 'Monitor', 150)
 Auditing item #1: Laptop ($800)
 Skipping minor budget item during audit (continue triggered): Mouse ($25)
 Auditing item #3: Keyboard ($45)
-🎯 Target item "Keyboard" located! Terminating search loop (break triggered).
+Target item "Keyboard" located! Terminating search loop (break triggered).
 
 --- Financial Analytics ---
 Total Inventory Value: $1020
