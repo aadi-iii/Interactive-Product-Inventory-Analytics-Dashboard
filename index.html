@@ -3,15 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
   <title>Interactive Product Inventory & Analytics Dashboard</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="app-container">
     <header class="app-header">
-      <div class="badge">JavaScript Internship Capstone Project</div>
-      <h1>Product Inventory & Analytics Dashboard</h1>
-      <p class="subtitle">Vanilla JavaScript Capstone Project implementing 15 Core JS Concepts</p>
+      <div class="badge">JavaScript Capstone</div>
+      <h1>Product Inventory & Analytics</h1>
+      <p class="subtitle">Vanilla JavaScript project implementing 15 core JS concepts.</p>
     </header>
 
     <!-- Stat Summary Grid -->
@@ -19,33 +20,33 @@
       <div class="stat-card">
         <span class="stat-label">Total Inventory Value</span>
         <span class="stat-value" id="statTotalValue">$0</span>
-        <span class="stat-sub font-mono">Calculated dynamically</span>
+        <span class="stat-sub">Calculated dynamically</span>
       </div>
       <div class="stat-card">
         <span class="stat-label">Total Products</span>
         <span class="stat-value" id="statTotalItems">0</span>
-        <span class="stat-sub font-mono">Items in array</span>
+        <span class="stat-sub">Items in array</span>
       </div>
       <div class="stat-card">
-        <span class="stat-label">Affordable Items</span>
+        <span class="stat-label">Affordable Products</span>
         <span class="stat-value" id="statAffordableItems">0</span>
-        <span class="stat-sub font-mono">Under $200 price limit</span>
+        <span class="stat-sub">Under $200 price limit</span>
       </div>
     </section>
 
     <!-- Action Toolbar -->
     <section class="controls-card">
-      <h2>Interactive Actions</h2>
-      <p class="control-desc">Click below to trigger interactive <code>prompt()</code> inputs and recalculate financial metrics live.</p>
+      <h2>Actions</h2>
+      <p class="control-desc">Add a product through a browser <code>prompt()</code>, run the audit, or reset the inventory. Totals recalculate on every action.</p>
       <div class="button-group">
         <button class="btn btn-primary" onclick="handleUserPromptAdd()">
-          <span>➕ Add Product via prompt()</span>
+          <span>Add Product</span>
         </button>
         <button class="btn btn-secondary" onclick="runDashboard(false)">
-          <span>🔄 Re-run Inventory Audit</span>
+          <span>Run Inventory Audit</span>
         </button>
         <button class="btn btn-outline" onclick="handleResetInventory()">
-          <span>🧹 Reset Roster</span>
+          <span>Reset Inventory</span>
         </button>
       </div>
     </section>
@@ -53,21 +54,18 @@
     <!-- Terminal Console Output Screen -->
     <section class="terminal-card">
       <div class="terminal-header">
-        <div class="terminal-dots">
-          <span class="dot red"></span>
-          <span class="dot yellow"></span>
-          <span class="dot green"></span>
-        </div>
-        <span class="terminal-title">Browser DevTools Console Output Log</span>
+        <h2 class="terminal-title">Console Output</h2>
+        <span class="terminal-meta">Mirrors the browser DevTools console</span>
       </div>
-      <pre id="terminalOutput" class="terminal-body"></pre>
+      <pre id="terminalOutput" class="terminal-body" tabindex="0" aria-label="Console output log"></pre>
     </section>
 
     <!-- Assignment Requirement Checklist UI View -->
     <section class="checklist-card">
-      <h2>📋 Assignment Requirement Checklist</h2>
-      <div class="table-responsive">
+      <h2>Assignment Checklist</h2>
+      <div class="table-responsive" tabindex="0" role="region" aria-label="Assignment checklist table, scrolls horizontally on small screens">
         <table class="checklist-table">
+          <caption class="sr-only">The 15 JavaScript concepts, where each is implemented, and how it works</caption>
           <thead>
             <tr>
               <th>#</th>
@@ -165,7 +163,7 @@
               <td>15</td>
               <td><strong>map() Array Method</strong></td>
               <td><code>app.js</code> (Lines 163, 184)</td>
-              <td>Transforms product array into formatted uppercase strings `["LAPTOP: $800", ...]`.</td>
+              <td>Transforms product array into formatted uppercase strings <code>["LAPTOP: $800", ...]</code>.</td>
             </tr>
           </tbody>
         </table>
